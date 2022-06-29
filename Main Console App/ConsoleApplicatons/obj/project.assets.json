@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "Main Console App/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Main Console App.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Main Console App.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Main Console App/1.0.0": {
+      "type": "project",
+      "path": "../Main Console App/Main Console App.csproj",
+      "msbuildProject": "../Main Console App/Main Console App.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "Main Console App >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\rafatam\\.nuget\\packages\\": {},
@@ -41,7 +60,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\rafatam\\Desktop\\MainConsoleApp\\Main Console App\\Main Console App\\Main Console App.csproj": {
+              "projectPath": "C:\\Users\\rafatam\\Desktop\\MainConsoleApp\\Main Console App\\Main Console App\\Main Console App.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

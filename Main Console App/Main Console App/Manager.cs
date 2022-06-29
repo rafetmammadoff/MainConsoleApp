@@ -27,19 +27,29 @@ namespace Main_Console_App
             TodoItems.Remove(todoItem);
         }
 
-        public void EditTodoItem(int no, string tittle, string description, DateTime deadline)
+        public void EditTodoItem(int no, string tittle, string description, DateTime? deadline)
         {
-            throw new NotImplementedException();
+            TodoItem todo= TodoItems.Find(x => x.No == no);
         }
 
         public List<TodoItem> FilterTodoItems(DateTime fromDate, DateTime toDate, TodoStatus? status)
         {
-            throw new NotImplementedException();
+            if (status != null)
+            {
+                List<TodoItem> todoItems = TodoItems.FindAll(x => x.Status == status && x.DeadLine > fromDate && x.DeadLine < toDate);
+                return todoItems;
+            }
+            else
+            {
+                List<TodoItem> todoItems = TodoItems.FindAll(x =>x.DeadLine > fromDate && x.DeadLine < toDate);
+                return todoItems;
+            }
         }
 
         public List<TodoItem> GetAllDelayedTasks()
         {
-            throw new NotImplementedException();
+            List<TodoItem> todoItems = TodoItems.FindAll(x => x.DeadLine < DateTime.Now && x.Status != TodoStatus.Done);
+            return todoItems;
         }
 
         public List<TodoItem> GetAllTodoItems()
