@@ -30,7 +30,32 @@ namespace ConsoleApplicatons
                         ShowDelayedTodoItems(manager);
                         break;
                     case "4":
-                        Console.WriteLine();
+                        ShowTodoItemsByStatus(manager);
+                        break;
+                    case "5":
+                        FilterTodoItems(manager);
+                        break;
+                    case "6":
+                        string noStr;
+                        int no;
+
+                        do
+                        {
+                            Console.WriteLine("Deyismek istediyiniz tapsirigin nomresini daxil edin.");
+                            noStr = Console.ReadLine();
+                        } while (!int.TryParse(noStr,out no) || !manager.HasNo(no));
+                        string secimStr;
+                        byte secim;
+                        do
+                        {
+                            Console.WriteLine("Deyiseceyiniz statusu secin");
+                            foreach (var item in Enum.GetValues(typeof(TodoStatus)))
+                            {
+                                Console.WriteLine($"{(byte)item} - {item}");
+                            }
+                            secimStr = Console.ReadLine();
+                        } while (!byte.TryParse(secimStr, out secim) || !Enum.IsDefined(typeof(TodoStatus), secim));
+                        manager.ChangeTodoItemStatus(no, (TodoStatus)secim);
                         break;
                 }
             } while (option != "0");
@@ -96,7 +121,7 @@ namespace ConsoleApplicatons
             List<TodoItem> allTodoItems = manager.GetAllTodoItems();
             foreach (var item in allTodoItems)
             {
-                Console.WriteLine($"Tittle: {item.Tittle} - Description: {item.Description} - DeadLine: {item.DeadLine}");
+                Console.WriteLine($"Tittle: {item.Tittle} - Description: {item.Description} - DeadLine: {item.DeadLine} - Status: {item.Status}");
             }
         }
         static void ShowDelayedTodoItems(Manager manager)
@@ -105,6 +130,77 @@ namespace ConsoleApplicatons
             foreach (TodoItem item in delayedTodo)
             {
                 Console.WriteLine(item.DeadLine);
+            }
+        }
+        static void ShowTodoItemsByStatus(Manager manager)
+        {
+            string secimStr;
+            byte secim;
+
+            do
+            {
+                Console.WriteLine("Axtaris etmek istediyiniz statusu secin");
+                foreach (var item in Enum.GetValues(typeof(TodoStatus)))
+                {
+                    Console.WriteLine($"{(byte)item} - {item}");
+                }
+                secimStr = Console.ReadLine();
+            } while (!byte.TryParse(secimStr, out secim) || !Enum.IsDefined(typeof(TodoStatus), secim));
+
+            List<TodoItem> list = manager.GetAllTodoItemsByStatus((TodoStatus)secim);
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Tittle);
+            }
+        }
+        static void FilterTodoItems(Manager manager)
+        {
+            DateTime fromDate;
+            string fromDateStr;
+            do
+            {
+                Console.WriteLine("FromDate daxil edin");
+                fromDateStr = Console.ReadLine();
+            } while (!DateTime.TryParse(fromDateStr, out fromDate));
+
+            DateTime toDate;
+            string toDateStr;
+            do
+            {
+                Console.WriteLine("ToDate daxil edin");
+                toDateStr = Console.ReadLine();
+            } while (!DateTime.TryParse(toDateStr, out toDate) || fromDate > toDate);
+            Console.WriteLine("Bir status secseniz hemin status uzre,secmeseniz hamisi uzre filtirlenecek;");
+            string secimStr;
+            byte secim = 0;
+            do
+            {
+                foreach (var item in Enum.GetValues(typeof(TodoStatus)))
+                {
+                    Console.WriteLine($"{(byte)item} - {item}");
+                }
+                secimStr = Console.ReadLine();
+                if (String.IsNullOrWhiteSpace(secimStr))
+                {
+                    secimStr = null;
+                    break;
+                }
+            } while (!byte.TryParse(secimStr, out secim) || !Enum.IsDefined(typeof(TodoStatus), secim));
+            if (secimStr == null)
+            {
+                List<TodoItem> todos = manager.FilterTodoItems(fromDate, toDate, null);
+                foreach (var item in todos)
+                {
+                    Console.WriteLine(item.Tittle + " " + item.DeadLine);
+                }
+            }
+            else
+            {
+                List<TodoItem> todos = manager.FilterTodoItems(fromDate, toDate, (TodoStatus)secim);
+                foreach (var item in todos)
+                {
+                    Console.WriteLine(item.Tittle + " " + item.DeadLine);
+                }
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Main_Console_App.Enums;
+using Main_Console_App.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,6 +23,20 @@ namespace Main_Console_App
         {
             TodoItem todoItem = _todoItems.Find(x => x.No == no);
             todoItem.Status = status;
+            todoItem.StatusChangedAt= DateTime.Now;
+
+        }
+        public bool HasNo(int no)
+        {
+            TodoItem todoItem = _todoItems.Find(x => x.No == no);
+            if (todoItem==null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
 
         }
 
@@ -50,6 +65,10 @@ namespace Main_Console_App
 
         public List<TodoItem> FilterTodoItems(DateTime fromDate, DateTime toDate, TodoStatus? status)
         {
+            if (fromDate>toDate)
+            {
+                throw new MistakeDateTimeException("toDate fromDate-den evvel ola bilmez !!!");
+            }
             if (status != null)
             {
                 List<TodoItem> todoItems = _todoItems.FindAll(x => x.Status == status && x.DeadLine > fromDate && x.DeadLine < toDate);
