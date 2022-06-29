@@ -10,11 +10,21 @@
         "runtime": {
           "ConsoleApplicatons.dll": {}
         }
+      },
+      "Main Console App/1.0.0": {
+        "runtime": {
+          "Main Console App.dll": {}
+        }
       }
     }
   },
   "libraries": {
     "ConsoleApplicatons/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Main Console App/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

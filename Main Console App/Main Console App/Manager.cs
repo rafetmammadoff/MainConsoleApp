@@ -30,6 +30,18 @@ namespace Main_Console_App
         public void EditTodoItem(int no, string tittle, string description, DateTime? deadline)
         {
             TodoItem todo= TodoItems.Find(x => x.No == no);
+            if (tittle != null)
+            {
+                todo.Tittle = tittle;
+            }
+            if (description != null)
+            {
+                todo.Description = description;
+            }
+            if (deadline != null)
+            {
+                todo.DeadLine =(DateTime)deadline;
+            }
         }
 
         public List<TodoItem> FilterTodoItems(DateTime fromDate, DateTime toDate, TodoStatus? status)

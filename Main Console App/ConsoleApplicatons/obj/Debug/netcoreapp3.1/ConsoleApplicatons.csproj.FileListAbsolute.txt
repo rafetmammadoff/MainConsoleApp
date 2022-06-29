@@ -12,3 +12,6 @@ C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\
 C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.dll
 C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.pdb
 C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.genruntimeconfig.cache
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\Main Console App.dll
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\Main Console App.pdb
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.csproj.CopyComplete

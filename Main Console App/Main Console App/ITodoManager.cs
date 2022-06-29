@@ -12,7 +12,7 @@ namespace Main_Console_App
         public List<TodoItem> GetAllTodoItems();
         public List<TodoItem> GetAllDelayedTasks();
         public void ChangeTodoItemStatus(int no,TodoStatus status);
-        public void EditTodoItem(int no,string tittle,string description,DateTime deadline);
+        public void EditTodoItem(int no,string tittle,string description,DateTime? deadline);
         public void DeleteTodoItem(int no);
         public List<TodoItem> GetAllTodoItemsByStatus(TodoStatus status);
         public List<TodoItem> SearchTodoItems(string text);
