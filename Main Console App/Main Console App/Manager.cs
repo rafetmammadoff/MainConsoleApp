@@ -5,31 +5,35 @@ using System.Text;
 
 namespace Main_Console_App
 {
-    class Manager : ITodoManager
+    public class Manager : ITodoManager
     {
-        public List<TodoItem> TodoItems => new List<TodoItem>();
+        private List<TodoItem> _todoItems=new List<TodoItem>();
+        public List<TodoItem> TodoItems
+        {
+            get { return _todoItems; }
+        }
 
         public void AddTodoItem(TodoItem todoItem)
         {
-            TodoItems.Add(todoItem);
+            _todoItems.Add(todoItem);
         }
 
         public void ChangeTodoItemStatus(int no, TodoStatus status)
         {
-            TodoItem todoItem = TodoItems.Find(x => x.No == no);
+            TodoItem todoItem = _todoItems.Find(x => x.No == no);
             todoItem.Status = status;
 
         }
 
         public void DeleteTodoItem(int no)
         {
-            TodoItem todoItem = TodoItems.Find(x => x.No == no);
-            TodoItems.Remove(todoItem);
+            TodoItem todoItem = _todoItems.Find(x => x.No == no);
+            _todoItems.Remove(todoItem);
         }
 
         public void EditTodoItem(int no, string tittle, string description, DateTime? deadline)
         {
-            TodoItem todo= TodoItems.Find(x => x.No == no);
+            TodoItem todo= _todoItems.Find(x => x.No == no);
             if (tittle != null)
             {
                 todo.Tittle = tittle;
@@ -48,36 +52,36 @@ namespace Main_Console_App
         {
             if (status != null)
             {
-                List<TodoItem> todoItems = TodoItems.FindAll(x => x.Status == status && x.DeadLine > fromDate && x.DeadLine < toDate);
+                List<TodoItem> todoItems = _todoItems.FindAll(x => x.Status == status && x.DeadLine > fromDate && x.DeadLine < toDate);
                 return todoItems;
             }
             else
             {
-                List<TodoItem> todoItems = TodoItems.FindAll(x =>x.DeadLine > fromDate && x.DeadLine < toDate);
+                List<TodoItem> todoItems = _todoItems.FindAll(x =>x.DeadLine > fromDate && x.DeadLine < toDate);
                 return todoItems;
             }
         }
 
         public List<TodoItem> GetAllDelayedTasks()
         {
-            List<TodoItem> todoItems = TodoItems.FindAll(x => x.DeadLine < DateTime.Now && x.Status != TodoStatus.Done);
+            List<TodoItem> todoItems = _todoItems.FindAll(x => x.DeadLine < DateTime.Now && x.Status != TodoStatus.Done);
             return todoItems;
         }
 
         public List<TodoItem> GetAllTodoItems()
         {
-            return TodoItems;
+            return _todoItems;
         }
 
         public List<TodoItem> GetAllTodoItemsByStatus(TodoStatus status)
         {
-            List<TodoItem> NewTodoItems = TodoItems.FindAll(x => x.Status == status);
+            List<TodoItem> NewTodoItems = _todoItems.FindAll(x => x.Status == status);
             return NewTodoItems;
         }
 
         public List<TodoItem> SearchTodoItems(string text)
         {
-            List<TodoItem> NewTodoItems = TodoItems.FindAll(x => x.Tittle.Contains(text));
+            List<TodoItem> NewTodoItems = _todoItems.FindAll(x => x.Tittle.Contains(text));
             return NewTodoItems;
         }
     }

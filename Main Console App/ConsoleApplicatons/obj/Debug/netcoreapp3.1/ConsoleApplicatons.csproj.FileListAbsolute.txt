@@ -15,3 +15,20 @@ C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\
 C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\Main Console App.dll
 C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\Main Console App.pdb
 C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.csproj.CopyComplete
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.csproj.AssemblyReference.cache
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.AssemblyInfoInputs.cache
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.AssemblyInfo.cs
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.csproj.CoreCompileInputs.cache
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.dll
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.pdb
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.exe
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.deps.json
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.runtimeconfig.json
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.runtimeconfig.dev.json
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.dll
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.pdb
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\Main Console App.dll
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\Main Console App.pdb
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.csproj.CopyComplete
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.genruntimeconfig.cache

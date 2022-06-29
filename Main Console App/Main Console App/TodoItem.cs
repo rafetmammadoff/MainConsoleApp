@@ -1,4 +1,5 @@
 ﻿using Main_Console_App.Enums;
+using Main_Console_App.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,8 +20,42 @@ namespace Main_Console_App
         public string Tittle;
         private string _description;
         public TodoStatus Status;
-        public DateTime DeadLine;
-        public DateTime TypeChangeAt;
+        private DateTime _deadLine;
+        public DateTime DeadLine
+        {
+            get => _deadLine;
+            set
+            {
+                string date_str = value.ToString();
+                if (CheckDeadline(date_str))
+                {
+                    _deadLine= value;
+                }
+            }
+        }
+        public static bool CheckDeadline(string date)
+        {
+            DateTime deadline;
+
+            if (!DateTime.TryParse(date,out deadline))
+            {
+                throw new MistakeDateTimeException("Yanlis daxil etdiniz mm:dd:yyy kimi daxil edin ");
+            }
+            else
+            {
+                if (deadline < DateTime.Now)
+                {
+                    throw new MistakeDeadlineException("Deadline vaxti indiki zamandan evvel ola bilmez");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            
+        }
+        public DateTime StatusChangedAt;
         public string Description
         {
             get => _description;

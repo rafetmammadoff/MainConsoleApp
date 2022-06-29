@@ -8,3 +8,13 @@ C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\De
 C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.csproj.CoreCompileInputs.cache
 C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.dll
 C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.pdb
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.csproj.AssemblyReference.cache
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.AssemblyInfoInputs.cache
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.AssemblyInfo.cs
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.csproj.CoreCompileInputs.cache
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.dll
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\obj\Debug\netcoreapp3.1\Main Console App.pdb
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\bin\Debug\netcoreapp3.1\Main Console App.deps.json
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\bin\Debug\netcoreapp3.1\Main Console App.dll
+C:\Users\profe\Desktop\MainConsoleApp\Main Console App\Main Console App\bin\Debug\netcoreapp3.1\Main Console App.pdb
