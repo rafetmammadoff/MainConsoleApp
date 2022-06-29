@@ -17,15 +17,33 @@ namespace ConsoleApplicatons
                 switch (option)
                 {
                     case "1":
-                        try
+
+                        Console.WriteLine("Tapsiriq basligini daxil edin");
+                        string tittle = Console.ReadLine();
+                        string description;
+                        do
                         {
-                            Add();
-                        }
-                        catch (Exception exp)
+                            Console.WriteLine("Tapsiriq aciqlama daxil edin");
+                            description = Console.ReadLine();
+                        } while (!TodoItem.CheckDescription(description));
+
+                        DateTime deadline;
+                        string deadlineStr;
+                        bool check;
+                        do
                         {
-                            Console.WriteLine(exp.Message);
-                        }
-                        
+                            Console.WriteLine("Tapsiriq dedline vaxtini teyin edin");
+                            deadlineStr = Console.ReadLine();
+                            check = DateTime.TryParse(deadlineStr, out deadline);
+                            if (check)
+                            {
+                                if (deadline<DateTime.Now)
+                                {
+                                    check = false;
+                                    throw new Exception("a");
+                                }
+                            }
+                        } while (!check);
 
 
 
@@ -46,35 +64,6 @@ namespace ConsoleApplicatons
             Console.WriteLine(" - 8.Tapşırığı silməl");
             Console.WriteLine(" - 9.Tapşırıqlarda axtarış");
             Console.WriteLine(" - 0.Çıxış");
-        }
-        static void Add()
-        {
-            Console.WriteLine("Tapsiriq basligini daxil edin");
-            string tittle = Console.ReadLine();
-            string description;
-            do
-            {
-                Console.WriteLine("Tapsiriq aciqlama daxil edin");
-                description = Console.ReadLine();
-            } while (!TodoItem.CheckDescription(description));
-
-            DateTime deadline;
-            string deadlineStr;
-            bool check;
-            do
-            {
-                Console.WriteLine("Tapsiriq dedline vaxtini teyin edin");
-                deadlineStr = Console.ReadLine();
-                check = DateTime.TryParse(deadlineStr, out deadline);
-                if (check)
-                {
-                    if (deadline < DateTime.Now)
-                    {
-                        check = false;
-                        throw new Exception("a");
-                    }
-                }
-            } while (!check);
         }
     }
 }
