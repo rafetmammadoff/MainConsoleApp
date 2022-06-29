@@ -1,0 +1,14 @@
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.exe
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.deps.json
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.runtimeconfig.json
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.runtimeconfig.dev.json
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.dll
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\bin\Debug\netcoreapp3.1\ConsoleApplicatons.pdb
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.csproj.AssemblyReference.cache
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.AssemblyInfoInputs.cache
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.AssemblyInfo.cs
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.csproj.CoreCompileInputs.cache
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.dll
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.pdb
+C:\Users\rafatam\Desktop\MainConsoleApp\Main Console App\ConsoleApplicatons\obj\Debug\netcoreapp3.1\ConsoleApplicatons.genruntimeconfig.cache
