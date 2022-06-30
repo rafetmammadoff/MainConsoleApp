@@ -36,26 +36,34 @@ namespace ConsoleApplicatons
                         FilterTodoItems(manager);
                         break;
                     case "6":
+                        ChangeTodoStatus(manager);
+                        break;
+                    case "7":
+                       EditTodoItems(manager);
+                        break;
+                    case "8":
                         string noStr;
                         int no;
-
+                        bool check = false;
                         do
                         {
-                            Console.WriteLine("Deyismek istediyiniz tapsirigin nomresini daxil edin.");
+                            Console.WriteLine("Silmek istediyiniz tapsirigin nomresini daxil edin.");
                             noStr = Console.ReadLine();
-                        } while (!int.TryParse(noStr,out no) || !manager.HasNo(no));
-                        string secimStr;
-                        byte secim;
-                        do
-                        {
-                            Console.WriteLine("Deyiseceyiniz statusu secin");
-                            foreach (var item in Enum.GetValues(typeof(TodoStatus)))
+                            check = int.TryParse(noStr, out no);
+                            if (check)
                             {
-                                Console.WriteLine($"{(byte)item} - {item}");
+                                try
+                                {
+                                    manager.HasNo(no);
+                                }
+                                catch (TodoItemNotFoundException exp)
+                                {
+                                    check = false;
+                                    Console.WriteLine(exp.Message);
+                                }
                             }
-                            secimStr = Console.ReadLine();
-                        } while (!byte.TryParse(secimStr, out secim) || !Enum.IsDefined(typeof(TodoStatus), secim));
-                        manager.ChangeTodoItemStatus(no, (TodoStatus)secim);
+                        } while (!check);
+                        manager.DeleteTodoItem(no);
                         break;
                 }
             } while (option != "0");
@@ -202,6 +210,116 @@ namespace ConsoleApplicatons
                     Console.WriteLine(item.Tittle + " " + item.DeadLine);
                 }
             }
+        }
+        static void ChangeTodoStatus(Manager manager)
+        {
+            string noStr;
+            int no;
+            bool check = false;
+            do
+            {
+                Console.WriteLine("Deyismek istediyiniz tapsirigin nomresini daxil edin.");
+                noStr = Console.ReadLine();
+                check = int.TryParse(noStr, out no);
+                if (check)
+                {
+                    try
+                    {
+                        manager.HasNo(no);
+                    }
+                    catch (TodoItemNotFoundException exp)
+                    {
+                        check = false;
+                        Console.WriteLine(exp.Message);
+                    }
+                }
+            } while (!check);
+            string secimStr;
+            byte secim;
+            do
+            {
+                Console.WriteLine("Deyiseceyiniz statusu secin");
+                foreach (var item in Enum.GetValues(typeof(TodoStatus)))
+                {
+                    Console.WriteLine($"{(byte)item} - {item}");
+                }
+                secimStr = Console.ReadLine();
+            } while (!byte.TryParse(secimStr, out secim) || !Enum.IsDefined(typeof(TodoStatus), secim));
+            manager.ChangeTodoItemStatus(no, (TodoStatus)secim);
+        }
+        static void EditTodoItems(Manager manager)
+        {
+            string noStr;
+            int no;
+            bool check = false;
+            do
+            {
+                Console.WriteLine("Editlemek istediyiniz tapsirigin nomresini daxil edin.");
+                noStr = Console.ReadLine();
+                check = int.TryParse(noStr, out no);
+                if (check)
+                {
+                    try
+                    {
+                        manager.HasNo(no);
+                    }
+                    catch (TodoItemNotFoundException exp)
+                    {
+                        check = false;
+                        Console.WriteLine(exp.Message);
+                    }
+                }
+            } while (!check);
+            DateTime? deadline = null;
+            string deadlineStr;
+            bool checkDeadline;
+            do
+            {
+                Console.WriteLine("Yni dedline vaxtini teyin edin");
+                deadlineStr = Console.ReadLine();
+                if (String.IsNullOrWhiteSpace(deadlineStr))
+                {
+                    deadline = null;
+                    break;
+                }
+                try
+                {
+                    checkDeadline = TodoItem.CheckDeadline(deadlineStr);
+                }
+                catch (MistakeDeadlineException exp)
+                {
+                    checkDeadline = false;
+                    Console.WriteLine(exp.Message);
+                }
+                catch (MistakeDateTimeException exp)
+                {
+                    checkDeadline = false;
+                    Console.WriteLine(exp.Message);
+                }
+            } while (!checkDeadline);
+            if (!String.IsNullOrWhiteSpace(deadlineStr))
+            {
+                deadline = DateTime.Parse(deadlineStr);
+            }
+
+            Console.WriteLine("Yeni basligi daxil edin");
+            string tittle = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(tittle))
+            {
+                tittle = null;
+            }
+            string description;
+            do
+            {
+                Console.WriteLine("Yeni aciqlamani daxil edin");
+                description = Console.ReadLine();
+                if (String.IsNullOrWhiteSpace(description))
+                {
+                    description = null;
+                    break;
+                }
+            } while (!TodoItem.CheckDescription(description));
+            manager.EditTodoItem(no, tittle, description, deadline);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Main_Console_App
             TodoItem todoItem = _todoItems.Find(x => x.No == no);
             if (todoItem==null)
             {
-                return false;
+                throw new TodoItemNotFoundException("Nomreli TodoItem tapilmadi");
             }
             else
             {
