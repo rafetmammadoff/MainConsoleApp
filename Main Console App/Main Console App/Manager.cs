@@ -124,15 +124,25 @@ namespace Main_Console_App
         {
             
             
-                List<TodoItem> NewTodoItems = _todoItems.FindAll(x => x.Status == status);
-                if (NewTodoItems.Count == 0)
-                {
-                    throw new EmptyCustomListException($"--------{status} statuslu tapsiriq yoxdur--------");
-                }
-                return NewTodoItems;
-            
-
-            
+            List<TodoItem> NewTodoItems = _todoItems.FindAll(x => x.Status == status);
+            if (NewTodoItems.Count == 0)
+            {
+                
+                throw new EmptyCustomListException($"--------{status} statuslu tapsiriq yoxdur--------");
+            }
+            return NewTodoItems;
+        }
+        public bool CheckHasStatus(string statusStr)
+        {
+            byte status;
+            if (byte.TryParse(statusStr, out status) && Enum.IsDefined(typeof(TodoStatus), status))
+            {
+                return true;
+            }
+            else
+            {
+                throw new NoConvertException("------Yanlis daxil etdiniz asagidakilardan birini secin");
+            }
         }
 
         public List<TodoItem> SearchTodoItems(string text)
