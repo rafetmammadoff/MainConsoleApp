@@ -107,12 +107,16 @@ namespace ConsoleApplicatons
                 catch (MistakeDeadlineException exp)
                 {
                     check = false;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(exp.Message);
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
                 catch (MistakeDateTimeException exp)
                 {
                     check = false;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(exp.Message);
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
             } while (!check);
             deadline = DateTime.Parse(deadlineStr);
@@ -369,6 +373,10 @@ namespace ConsoleApplicatons
                 secimStr = Console.ReadLine();
             } while (!byte.TryParse(secimStr, out secim) || !Enum.IsDefined(typeof(TodoStatus), secim));
             manager.ChangeTodoItemStatus(no, (TodoStatus)secim);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Change successfully");
+            Console.ForegroundColor = ConsoleColor.White;
+
         }
         static void EditTodoItems(Manager manager)
         {

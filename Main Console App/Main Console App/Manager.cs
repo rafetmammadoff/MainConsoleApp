@@ -31,7 +31,7 @@ namespace Main_Console_App
             TodoItem todoItem = _todoItems.Find(x => x.No == no);
             if (todoItem==null)
             {
-                throw new TodoItemNotFoundException("Nomreli TodoItem tapilmadi");
+                throw new TodoItemNotFoundException($"{no} nomreli TodoItem tapilmadi");
             }
             else
             {
