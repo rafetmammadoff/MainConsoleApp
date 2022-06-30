@@ -39,7 +39,7 @@ namespace Main_Console_App
 
             if (!DateTime.TryParse(date,out deadline))
             {
-                throw new MistakeDateTimeException("Yanlis daxil etdiniz mm:dd:yyy kimi daxil edin ");
+                throw new MistakeDateTimeException("Yanlis daxil etdiniz 'dd mm yyyy hh:mm' kimi daxil edin ");
             }
             else
             {

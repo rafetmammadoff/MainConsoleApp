@@ -14,7 +14,7 @@ namespace Main_Console_App
         public void ChangeTodoItemStatus(int no,TodoStatus status);
         public void EditTodoItem(int no,string tittle,string description,DateTime? deadline);
         public void DeleteTodoItem(int no);
-        public List<TodoItem> GetAllTodoItemsByStatus(TodoStatus status);
+        public List<TodoItem> GetAllTodoItemsByStatus(TodoStatus? status);
         public List<TodoItem> SearchTodoItems(string text);
         public List<TodoItem> FilterTodoItems(DateTime fromDate,DateTime toDate, TodoStatus? status);
     }

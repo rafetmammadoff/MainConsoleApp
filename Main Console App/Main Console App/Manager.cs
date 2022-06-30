@@ -84,18 +84,46 @@ namespace Main_Console_App
         public List<TodoItem> GetAllDelayedTasks()
         {
             List<TodoItem> todoItems = _todoItems.FindAll(x => x.DeadLine < DateTime.Now && x.Status != TodoStatus.Done);
+            if (_todoItems.Count==0)
+            {
+                throw new EmptyListException("--------Hal hazirda tapsiriq yoxdur--------");
+            }
+            if (todoItems.Count==0)
+            {
+                throw new EmptyCustomListException("--------Vaxti kecmis tapsiriq yoxdur--------");
+            }
             return todoItems;
         }
 
         public List<TodoItem> GetAllTodoItems()
         {
+            if (_todoItems.Count==0)
+            {
+                throw new EmptyListException("---------Hal hazirda tapsiriq yoxdur.--------");
+            }
             return _todoItems;
         }
 
-        public List<TodoItem> GetAllTodoItemsByStatus(TodoStatus status)
+        public void CheckEmpty()
         {
-            List<TodoItem> NewTodoItems = _todoItems.FindAll(x => x.Status == status);
-            return NewTodoItems;
+            if (_todoItems.Count==0)
+            {
+                throw new EmptyListException("---------Hal hazirda tapsiriq yoxdur---------");
+            }
+        }
+        public List<TodoItem> GetAllTodoItemsByStatus(TodoStatus? status)
+        {
+            
+            
+                List<TodoItem> NewTodoItems = _todoItems.FindAll(x => x.Status == status);
+                if (NewTodoItems.Count == 0)
+                {
+                    throw new EmptyCustomListException($"--------{status} statuslu tapsiriq yoxdur--------");
+                }
+                return NewTodoItems;
+            
+
+            
         }
 
         public List<TodoItem> SearchTodoItems(string text)

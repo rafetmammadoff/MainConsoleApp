@@ -46,13 +46,10 @@ namespace ConsoleApplicatons
                         DeleteTodoItem(manager);
                         break;
                     case "9":
-                        Console.WriteLine("Axtaris deyerini daxil edin");
-                        string text = Console.ReadLine();
-                        List<TodoItem> list= manager.SearchTodoItems(text);
-                        foreach (var item in list)
-                        {
-                            Console.WriteLine(item.Tittle);
-                        }
+                        SearchTodoItem(manager);
+                        break;
+                    default:
+                        Console.WriteLine("Yalnis secim etdiniz");
                         break;
                 }
             } while (option != "0");
@@ -78,7 +75,7 @@ namespace ConsoleApplicatons
             string description;
             do
             {
-                Console.WriteLine("Tapsiriq aciqlama daxil edin");
+                Console.WriteLine("Tapsiriga aciqlama daxil edin (Minimum 2 soz olmalidir)");
                 description = Console.ReadLine();
             } while (!TodoItem.CheckDescription(description));
 
@@ -115,7 +112,16 @@ namespace ConsoleApplicatons
         }
         static void ShowAllTodoItems(Manager manager)
         {
-            List<TodoItem> allTodoItems = manager.GetAllTodoItems();
+            List<TodoItem> allTodoItems=new List<TodoItem>();
+            try
+            {
+                 allTodoItems = manager.GetAllTodoItems();
+            }
+            catch (EmptyListException exp)
+            {
+                Console.WriteLine(exp.Message);
+                return; 
+            }
             foreach (var item in allTodoItems)
             {
                 Console.WriteLine($"Tittle: {item.Tittle} - Description: {item.Description} - DeadLine: {item.DeadLine} - Status: {item.Status}");
@@ -123,7 +129,19 @@ namespace ConsoleApplicatons
         }
         static void ShowDelayedTodoItems(Manager manager)
         {
-            List<TodoItem> delayedTodo = manager.GetAllDelayedTasks();
+            List<TodoItem> delayedTodo = new List<TodoItem>();
+            try
+            {
+                delayedTodo = manager.GetAllDelayedTasks();
+            }
+            catch (EmptyListException exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+            catch(EmptyCustomListException exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
             foreach (TodoItem item in delayedTodo)
             {
                 Console.WriteLine(item.DeadLine);
@@ -133,7 +151,15 @@ namespace ConsoleApplicatons
         {
             string secimStr;
             byte secim;
-
+            try
+            {
+                manager.CheckEmpty();
+            }
+            catch (EmptyListException exp)
+            {
+                Console.WriteLine(exp.Message);
+                return;
+            }
             do
             {
                 Console.WriteLine("Axtaris etmek istediyiniz statusu secin");
@@ -143,8 +169,15 @@ namespace ConsoleApplicatons
                 }
                 secimStr = Console.ReadLine();
             } while (!byte.TryParse(secimStr, out secim) || !Enum.IsDefined(typeof(TodoStatus), secim));
-
-            List<TodoItem> list = manager.GetAllTodoItemsByStatus((TodoStatus)secim);
+            List<TodoItem> list = new List<TodoItem>();
+            try
+            {
+                list = manager.GetAllTodoItemsByStatus((TodoStatus)secim);
+            }
+            catch (EmptyCustomListException exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
             foreach (var item in list)
             {
                 Console.WriteLine(item.Tittle);
@@ -334,6 +367,16 @@ namespace ConsoleApplicatons
                 }
             } while (!check);
             manager.DeleteTodoItem(no);
+        }
+        static void SearchTodoItem(Manager manager)
+        {
+            Console.WriteLine("Axtaris deyerini daxil edin");
+            string text = Console.ReadLine();
+            List<TodoItem> list = manager.SearchTodoItems(text);
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Tittle);
+            }
         }
     }
 }
