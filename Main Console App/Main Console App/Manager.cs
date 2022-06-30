@@ -69,14 +69,23 @@ namespace Main_Console_App
             {
                 throw new MistakeDateTimeException("toDate fromDate-den evvel ola bilmez !!!");
             }
+            
             if (status != null)
             {
                 List<TodoItem> todoItems = _todoItems.FindAll(x => x.Status == status && x.DeadLine > fromDate && x.DeadLine < toDate);
+                if (todoItems.Count == 0)
+                {
+                    throw new EmptyCustomListException($"{fromDate} - {toDate} araliginda {status} statuslu tapsiriq yoxdur");
+                }
                 return todoItems;
             }
             else
             {
                 List<TodoItem> todoItems = _todoItems.FindAll(x =>x.DeadLine > fromDate && x.DeadLine < toDate);
+                if (todoItems.Count == 0)
+                {
+                    throw new EmptyCustomListException($"{fromDate} - {toDate} araliginda tapsiriq yoxdur");
+                }
                 return todoItems;
             }
         }
@@ -129,6 +138,10 @@ namespace Main_Console_App
         public List<TodoItem> SearchTodoItems(string text)
         {
             List<TodoItem> NewTodoItems = _todoItems.FindAll(x => x.Tittle.Contains(text));
+            if (NewTodoItems.Count==0)
+            {
+                throw new EmptyCustomListException($"Axtarisa uygun gelen tapsiriq tapilmadi");
+            }
             return NewTodoItems;
         }
     }

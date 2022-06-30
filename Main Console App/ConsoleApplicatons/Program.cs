@@ -144,7 +144,7 @@ namespace ConsoleApplicatons
             }
             foreach (TodoItem item in delayedTodo)
             {
-                Console.WriteLine(item.DeadLine);
+                Console.WriteLine($"Tittle: {item.Tittle} - Description: {item.Description} - DeadLine: {item.DeadLine} - Status: {item.Status}");
             }
         }
         static void ShowTodoItemsByStatus(Manager manager)
@@ -180,11 +180,20 @@ namespace ConsoleApplicatons
             }
             foreach (var item in list)
             {
-                Console.WriteLine(item.Tittle);
+                Console.WriteLine($"Tittle: {item.Tittle} - Description: {item.Description} - DeadLine: {item.DeadLine} - Status: {item.Status}");
             }
         }
         static void FilterTodoItems(Manager manager)
         {
+            try
+            {
+                manager.CheckEmpty();
+            }
+            catch (EmptyListException exp)
+            {
+                Console.WriteLine(exp.Message);
+                return;
+            }
             DateTime fromDate;
             string fromDateStr;
             do
@@ -218,23 +227,48 @@ namespace ConsoleApplicatons
             } while (!byte.TryParse(secimStr, out secim) || !Enum.IsDefined(typeof(TodoStatus), secim));
             if (secimStr == null)
             {
-                List<TodoItem> todos = manager.FilterTodoItems(fromDate, toDate, null);
+                List<TodoItem> todos = new List<TodoItem>();
+                try
+                {
+                    todos = manager.FilterTodoItems(fromDate, toDate, null);
+                }
+                catch (EmptyCustomListException exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
                 foreach (var item in todos)
                 {
-                    Console.WriteLine(item.Tittle + " " + item.DeadLine);
+                    Console.WriteLine($"Tittle: {item.Tittle} - Description: {item.Description} - DeadLine: {item.DeadLine} - Status: {item.Status}");
                 }
             }
             else
             {
-                List<TodoItem> todos = manager.FilterTodoItems(fromDate, toDate, (TodoStatus)secim);
+                List<TodoItem> todos = new List<TodoItem>();
+                try
+                {
+                    todos = manager.FilterTodoItems(fromDate, toDate, (TodoStatus)secim);
+                }
+                catch (EmptyCustomListException exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
                 foreach (var item in todos)
                 {
-                    Console.WriteLine(item.Tittle + " " + item.DeadLine);
+                    Console.WriteLine($"Tittle: {item.Tittle} - Description: {item.Description} - DeadLine: {item.DeadLine} - Status: {item.Status}");
                 }
             }
         }
         static void ChangeTodoStatus(Manager manager)
         {
+            try
+            {
+                manager.CheckEmpty();
+            }
+            catch (EmptyListException exp)
+            {
+                Console.WriteLine(exp.Message);
+                return;
+            }
             string noStr;
             int no;
             bool check = false;
@@ -271,6 +305,15 @@ namespace ConsoleApplicatons
         }
         static void EditTodoItems(Manager manager)
         {
+            try
+            {
+                manager.CheckEmpty();
+            }
+            catch (EmptyListException exp)
+            {
+                Console.WriteLine(exp.Message);
+                return;
+            }
             string noStr;
             int no;
             bool check = false;
@@ -297,7 +340,7 @@ namespace ConsoleApplicatons
             bool checkDeadline;
             do
             {
-                Console.WriteLine("Yni dedline vaxtini teyin edin");
+                Console.WriteLine("Yeni dedline vaxtini teyin edin (Bos buraxa bilersiniz)");
                 deadlineStr = Console.ReadLine();
                 if (String.IsNullOrWhiteSpace(deadlineStr))
                 {
@@ -324,7 +367,7 @@ namespace ConsoleApplicatons
                 deadline = DateTime.Parse(deadlineStr);
             }
 
-            Console.WriteLine("Yeni basligi daxil edin");
+            Console.WriteLine("Yeni basligi daxil edin (Bos buraxa bilersiniz)");
             string tittle = Console.ReadLine();
             if (String.IsNullOrWhiteSpace(tittle))
             {
@@ -333,7 +376,7 @@ namespace ConsoleApplicatons
             string description;
             do
             {
-                Console.WriteLine("Yeni aciqlamani daxil edin");
+                Console.WriteLine("Yeni aciqlamani daxil edin (Bos buraxa bilersiniz)");
                 description = Console.ReadLine();
                 if (String.IsNullOrWhiteSpace(description))
                 {
@@ -345,6 +388,15 @@ namespace ConsoleApplicatons
         }
         static void DeleteTodoItem(Manager manager)
         {
+            try
+            {
+                manager.CheckEmpty();
+            }
+            catch (EmptyListException exp)
+            {
+                Console.WriteLine(exp.Message);
+                return;
+            }
             string noStr;
             int no;
             bool check = false;
@@ -370,12 +422,29 @@ namespace ConsoleApplicatons
         }
         static void SearchTodoItem(Manager manager)
         {
+            try
+            {
+                manager.CheckEmpty();
+            }
+            catch (EmptyListException exp)
+            {
+                Console.WriteLine(exp.Message);
+                return;
+            }
             Console.WriteLine("Axtaris deyerini daxil edin");
             string text = Console.ReadLine();
-            List<TodoItem> list = manager.SearchTodoItems(text);
+            List<TodoItem> list = new List<TodoItem>();
+            try
+            {
+                list = manager.SearchTodoItems(text);
+            }
+            catch (EmptyCustomListException exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
             foreach (var item in list)
             {
-                Console.WriteLine(item.Tittle);
+                Console.WriteLine($"Tittle: {item.Tittle} - Description: {item.Description} - DeadLine: {item.DeadLine} - Status: {item.Status}");
             }
         }
     }
