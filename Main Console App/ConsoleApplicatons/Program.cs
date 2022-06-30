@@ -12,6 +12,7 @@ namespace ConsoleApplicatons
         static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture=new System.Globalization.CultureInfo("az-Az");
+            Console.OutputEncoding= System.Text.Encoding.UTF8;
             Manager manager = new Manager();
             string option;
             do
@@ -42,28 +43,16 @@ namespace ConsoleApplicatons
                        EditTodoItems(manager);
                         break;
                     case "8":
-                        string noStr;
-                        int no;
-                        bool check = false;
-                        do
+                        DeleteTodoItem(manager);
+                        break;
+                    case "9":
+                        Console.WriteLine("Axtaris deyerini daxil edin");
+                        string text = Console.ReadLine();
+                        List<TodoItem> list= manager.SearchTodoItems(text);
+                        foreach (var item in list)
                         {
-                            Console.WriteLine("Silmek istediyiniz tapsirigin nomresini daxil edin.");
-                            noStr = Console.ReadLine();
-                            check = int.TryParse(noStr, out no);
-                            if (check)
-                            {
-                                try
-                                {
-                                    manager.HasNo(no);
-                                }
-                                catch (TodoItemNotFoundException exp)
-                                {
-                                    check = false;
-                                    Console.WriteLine(exp.Message);
-                                }
-                            }
-                        } while (!check);
-                        manager.DeleteTodoItem(no);
+                            Console.WriteLine(item.Tittle);
+                        }
                         break;
                 }
             } while (option != "0");
@@ -320,6 +309,31 @@ namespace ConsoleApplicatons
                 }
             } while (!TodoItem.CheckDescription(description));
             manager.EditTodoItem(no, tittle, description, deadline);
+        }
+        static void DeleteTodoItem(Manager manager)
+        {
+            string noStr;
+            int no;
+            bool check = false;
+            do
+            {
+                Console.WriteLine("Silmek istediyiniz tapsirigin nomresini daxil edin.");
+                noStr = Console.ReadLine();
+                check = int.TryParse(noStr, out no);
+                if (check)
+                {
+                    try
+                    {
+                        manager.HasNo(no);
+                    }
+                    catch (TodoItemNotFoundException exp)
+                    {
+                        check = false;
+                        Console.WriteLine(exp.Message);
+                    }
+                }
+            } while (!check);
+            manager.DeleteTodoItem(no);
         }
     }
 }
